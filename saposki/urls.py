@@ -21,7 +21,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    # url(r'^', include('about.urls')),
+    url(r'^', include('about.urls')),
     url(r'^about/', include('about.urls', namespace='about')),
     url(r'^portrait/', include('portrait.urls', namespace='portrait')),
     url(r'^crasher/', include('crasher.urls', namespace='crasher')),
