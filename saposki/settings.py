@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,6 +43,8 @@ INSTALLED_APPS = [
     'portrait',
     'crasher',
     'street',
+    'storages',
+    'boto',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -130,6 +133,31 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+access_key = 'AKIAJVESQIIMDC6IT5BA'
+secret_key = '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'
+
+AWS_ACCESS_KEY_ID = access_key
+AWS_SECRET_ACCESS_KEY = secret_key
+
+AWS_STORAGE_BUCKET_NAME = 'saposki'
+
+STATICFILES_STORAGE = 'saposki.s3utils.StaticRootS3BotoStorage'
+DEFAULT_FILE_STORAGE = 'saposki.s3utils.MediaRootS3BotoStorage'
+
+S3_URL = '//%s.s3.amazonaws.com/' %AWS_STORAGE_BUCKET_NAME
+MEDIA_URL = S3_URL + "media/"
+STATIC_URL = S3_URL + "static/"
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+
+date_two_months_later = datetime.date.today() + datetime.timedelta(2 * 365 / 12)
+expires = date_two_months_later.strftime("%A, %d %B %Y 20:00:00 GMT")
+
+AWS_HEADERS = {
+    'Expires': expires,
+    'Cache-Control': 'max-age=86400',
+}
+
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
