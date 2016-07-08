@@ -1,0 +1,56 @@
+{% load staticfiles %}
+
+<html>
+   <head>
+      <title>{% block head_title %} saposki{% endblock head_title %}</title>
+      <link rel="stylesheet" href="{% static "css/style.css" %}">
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+      <script type="text/javascript" src="http://cdn.jsdelivr.net/restangular/latest/restangular.js"></script>
+   </head>
+   <body>
+         <div class='top clearfix'>
+               <div class='logo'>
+                  <div id="element-1" class="element">S</div>
+                  <div id="element-2" class="element">A</div>
+                  <div id="element-3" class="element">P</div>
+                  <div id="element-4" class="element">O</div>
+                  <div id="element-5" class="element">S</div>
+                  <div id="element-6" class="element">K</div>
+                  <div id="element-7" class="element">I</div>
+               </div> <!--end logo-->
+
+               <div class='nav'>
+                  <ul>
+                     <li><a href="{% url 'about:abt' %}">about</a></li>
+                     <li><a href="{% url 'portrait:port' %}">portrait</a></li>
+                     <li><a href="{% url 'street:st' %}">street</a></li>
+                     <li><a href="{% url 'crasher:crash' %}">crasher</a></li>
+                  </ul>
+               </div> <!--end nav-->
+         </div><!--end container_12 clearfix-->
+
+         <div class='content'>
+            <ul>
+               {% block content %}
+
+               {% endblock content %}
+            </ul>
+         </div><!--end content  -->
+
+         <div class='foot'>
+            <div class='copyright'>
+               <p><span class='copy'>&copy;</span> saposki <span class='year'>2016</span></p>
+            </div><!--end copyright-->
+            <div class="social-media">
+               <ul>
+                  <!-- <li><img style='width:32px; height:32fixpx;'src="images/facebook.png" alt=""></li> -->
+                  <!-- <li><img style='padding-top:3px;'src='images/twitter.png' alt=""></li> -->
+                  <li><a href="https://www.instagram.com/saposki/"><img src="{% static "images/instagram.png" %}" alt=""></a></li>
+                  <li><a href="https://www.pinterest.com/saposki/"><img src="{% static "images/pinterest.png" %}" alt=""></a></li>
+               </ul>
+            </div><!--end social-media  -->
+         </div> <!--end foot-->
+</body>
+<script src="{% static "javascript/script.js" %}"></script>
+</html>

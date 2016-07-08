@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="postcard">
+   {% if instance.image %}
+      <div class='crasher'>
+         <img src="{{ instance.image.url }}" alt="">
+      </div>
+      <div class="description">
+         {{ instance.description }}
+      </div>
+   {% endif %}
+</div>
+
+{% endblock content %}

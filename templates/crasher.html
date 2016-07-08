@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+   {% for obj in crasher %}
+      {% if obj.image %}
+         <li>
+            <a class="thumbnail" href="{% url 'crasher:detail' id=obj.id %}"><img src="{{obj.image.url}}" alt=""></a>
+         </li>
+      {% endif %}
+   {% endfor %}
+
+{% endblock content %}
