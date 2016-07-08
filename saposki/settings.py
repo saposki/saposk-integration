@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 import datetime
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,7 +27,7 @@ SECRET_KEY = 'o+3%zf1%u(4tjer5u_%kkhb(n38q2xqs*soq$h4@j4*gpn2iq2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -85,11 +86,11 @@ WSGI_APPLICATION = 'saposki.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'saposki',
-        'USER': 'saposkiuser',
-        'PASSWORD': 'sappskipassword',
-        'HOST': 'localhost',
-        'PORT': '',
+        # 'NAME': 'saposki',
+        # 'USER': 'saposkiuser',
+        # 'PASSWORD': 'sappskipassword',
+        # 'HOST': 'localhost',
+        # 'PORT': '',
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
@@ -174,16 +175,16 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
 # # DATABASES = { 'default' : dj_database_url.config()}
 #
 # # Honor the 'X-Forwarded-Proto' header for request.is_secure()
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 #
 # # Allow allhost headers
 # ALLOWED_HOSTS  = ['*']
 #
-# # try to load local_settings.py if it exists
-# try:
-#   from local_settings import *
-# except Exception as e:
-#   pass
+# try to load local_settings.py if it exists
+try:
+  from local_settings import *
+except Exception as e:
+  pass
 
 # DATABASES = {
 #     "default": {
