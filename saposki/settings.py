@@ -87,8 +87,9 @@ WSGI_APPLICATION = 'saposki.wsgi.application'
 # db_from_env = dj_database_url.config()
 # DATABASES['default'].update(db_from_env)
 # DATABASES['default'] =  dj_database_url.config()
+db = 'postgres://vendmkuzmsalwr:shgcYa2mat7dhvUyopSscYUcsx@ec2-54-243-249-176.compute-1.amazonaws.com:5432/d2p578kgndvb42'
 
-DATABASES = { 'default' : dj_database_url.config(default='postgres://vendmkuzmsalwr:shgcYa2mat7dhvUyopSscYUcsx@ec2-54-243-249-176.compute-1.amazonaws.com:5432/d2p578kgndvb42')}
+DATABASES = { 'default' : dj_database_url.config(default=db)}
 
 
 # DATABASES = {
@@ -186,10 +187,10 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # ALLOWED_HOSTS  = ['*']
 #
 # try to load local_settings.py if it exists
-try:
-  from local_settings import *
-except Exception as e:
-  pass
+# try:
+#   from local_settings import *
+# except Exception as e:
+#   pass
 
 # DATABASES = {
 #     "default": {
