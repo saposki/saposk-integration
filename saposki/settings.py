@@ -84,30 +84,8 @@ WSGI_APPLICATION = 'saposki.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-# db_from_env = dj_database_url.config()
-# DATABASES['default'].update(db_from_env)
-# DATABASES['default'] =  dj_database_url.config()
 db = 'postgres://vendmkuzmsalwr:shgcYa2mat7dhvUyopSscYUcsx@ec2-54-243-249-176.compute-1.amazonaws.com:5432/d2p578kgndvb42'
-
 DATABASES = { 'default' : dj_database_url.config(default=db)}
-
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         # 'NAME': 'saposki',
-#         # 'USER': 'saposkiuser',
-#         # 'PASSWORD': 'sappskipassword',
-#         # 'HOST': 'localhost',
-#         # 'PORT': '',
-#         # 'ENGINE': 'django.db.backends.sqlite3',
-#         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
-
-# Password validation
-# https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -137,7 +115,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
@@ -179,17 +156,15 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
-#
+
 # # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-#
-# # Allow allhost headers
-# ALLOWED_HOSTS  = ['*']
-#
+
 # try to load local_settings.py if it exists
 # try:
 #   from local_settings import *
 # except Exception as e:
+#   DATABASES = { 'default' : dj_database_url.config(default=db)}
 #   pass
 
 # DATABASES = {
@@ -197,11 +172,3 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 #         "ENGINE": "django.db.backends.postgresql_psycopg2",
 #     }
 # }
-
-# if not DEBUG:
-#    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
-#    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-#    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-#    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-#    S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
-#    STATIC_URL = S3_URL
