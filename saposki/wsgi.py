@@ -13,7 +13,10 @@ from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "saposki.settings")
 
+from django.conf import settings
+
 application = get_wsgi_application()
 
-from whitenoise.django import DjangoWhiteNoise
-application = DjangoWhiteNoise(application)
+if not settings.DEBUG:
+    from whitenoise.django import DjangoWhiteNoise
+    application = DjangoWhiteNoise(application)

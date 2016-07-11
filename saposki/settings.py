@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'o+3%zf1%u(4tjer5u_%kkhb(n38q2xqs*soq$h4@j4*gpn2iq2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -121,26 +121,30 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AWS_ACCESS_KEY_ID = access_key
-AWS_SECRET_ACCESS_KEY = secret_key
+if not DEBUG:
+    #
 
-AWS_STORAGE_BUCKET_NAME = 'saposki'
 
-STATICFILES_STORAGE = 'saposki.s3utils.StaticRootS3BotoStorage'
-DEFAULT_FILE_STORAGE = 'saposki.s3utils.MediaRootS3BotoStorage'
+    AWS_ACCESS_KEY_ID = access_key
+    AWS_SECRET_ACCESS_KEY = secret_key
 
-S3_URL = '//%s.s3.amazonaws.com/' %AWS_STORAGE_BUCKET_NAME
-MEDIA_URL = S3_URL + "media/"
-STATIC_URL = S3_URL + "static/"
-ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+    AWS_STORAGE_BUCKET_NAME = 'saposki'
 
-date_two_months_later = datetime.date.today() + datetime.timedelta(2 * 365 / 12)
-expires = date_two_months_later.strftime("%A, %d %B %Y 20:00:00 GMT")
+    STATICFILES_STORAGE = 'saposki.s3utils.StaticRootS3BotoStorage'
+    DEFAULT_FILE_STORAGE = 'saposki.s3utils.MediaRootS3BotoStorage'
 
-AWS_HEADERS = {
-    'Expires': expires,
-    'Cache-Control': 'max-age=86400',
-}
+    S3_URL = '//%s.s3.amazonaws.com/' %AWS_STORAGE_BUCKET_NAME
+    MEDIA_URL = S3_URL + "media/"
+    STATIC_URL = S3_URL + "static/"
+    ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+
+    date_two_months_later = datetime.date.today() + datetime.timedelta(2 * 365 / 12)
+    expires = date_two_months_later.strftime("%A, %d %B %Y 20:00:00 GMT")
+
+    AWS_HEADERS = {
+        'Expires': expires,
+        'Cache-Control': 'max-age=86400',
+    }
 
 
 STATICFILES_DIRS = [
@@ -158,11 +162,11 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # try to load local_settings.py if it exists
-# try:
-#   from local_settings import *
-# except Exception as e:
-#   DATABASES = { 'default' : dj_database_url.config(default=db)}
-#   pass
+try:
+  from local_settings import *
+except Exception as e:
+  # DATABASES = { 'default' : dj_database_url.config(default=db)}
+  pass
 
 # DATABASES = {
 #     "default": {
