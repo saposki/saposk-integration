@@ -2,4 +2,5 @@ saposki
 *.pyc
 staticfiles
 .env
-saposki/settings.py
+/saposki/settings.py
+settings.py
