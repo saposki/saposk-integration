@@ -49,17 +49,6 @@ INSTALLED_APPS = [
     'boto',
 ]
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'saposki',
-        'USER': 'saposkiuser',
-        'PASSWORD': 'sappskipassword',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -94,6 +83,13 @@ WSGI_APPLICATION = 'saposki.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
+
+# db_from_env = dj_database_url.config()
+# DATABASES['default'].update(db_from_env)
+# DATABASES['default'] =  dj_database_url.config()
+
+DATABASES = { 'default' : dj_database_url.config(default='postgres://vendmkuzmsalwr:shgcYa2mat7dhvUyopSscYUcsx@ec2-54-243-249-176.compute-1.amazonaws.com:5432/d2p578kgndvb42')}
+
 
 # DATABASES = {
 #     'default': {
@@ -182,10 +178,6 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
-
-# DATABASES['default'] =  dj_database_url.config()
-
-DATABASES = { 'default' : dj_database_url.config()}
 #
 # # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
