@@ -136,9 +136,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-access_key = 'AKIAJVESQIIMDC6IT5BA'
-secret_key = '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'
-
 AWS_ACCESS_KEY_ID = access_key
 AWS_SECRET_ACCESS_KEY = secret_key
 
