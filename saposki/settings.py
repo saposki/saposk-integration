@@ -120,13 +120,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-
+#
 if not DEBUG:
     #
 
 
-    AWS_ACCESS_KEY_ID = access_key
-    AWS_SECRET_ACCESS_KEY = secret_key
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 
     AWS_STORAGE_BUCKET_NAME = 'saposki'
 

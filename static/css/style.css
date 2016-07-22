@@ -67,6 +67,7 @@ body{
    padding-top: 10px;
    width:960px;
    height:55px;
+   clear: both;
 }
 
 .copyright{
